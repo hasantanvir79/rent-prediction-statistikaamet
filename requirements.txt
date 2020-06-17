@@ -1,0 +1,7 @@
+flask
+pandas
+gunicorn
+pickle-mixin
+numpy
+tensorflow==2.0.0
+keras

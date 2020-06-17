@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<style>
+form {
+    margin: auto;
+    width: 35%;
+}
+.result {
+    margin: auto;
+    width: 35%;
+    border: 1px solid #ccc;
+}
+</style>
+<head>
+    <title>Rent Prediction </title>
+</head>
+<form action="{{ url_for('main') }}" method="POST">
+    <fieldset>
+        <legend>Input values:</legend>
+        pricesqm:
+        <input name="Price per Square Meter" type="number" id="pricesqm" required>
+        <br>
+        <br> lat:
+        <input name="Latitude" type="number" id="lat" required>
+        <br>
+        <br> long:
+        <input name="Longitude" type="number" id="long" required>
+        <br>
+		<br>rooms:
+        <input name="rooms" type="number" id="rooms" required>
+        <br>
+		<br>area:
+        <input name="Area" type="number" id="area" required>
+        <br>
+		<br>totalarea:
+        <input name="Total Area" type="number" id="totalarea" required>
+        <br>
+		<br>floor:
+        <input name="Which Floor" type="number" id="floor" required>
+        <br>
+		<br>builtyear:
+        <input name="Built Year" type="number" id="builtyear" required>
+        <br>
+		<br>bills_summer:
+        <input name="Bills of Summer" type="number" id="bills_summer" required>
+        <br>
+		<br>bills_winter:
+        <input name="Bills of Winter" type="number" id="bills_winter" required>
+        <br>
+
+		<input type="checkbox" id="sauna" name="sauna" value=1>
+		<input id='saunaHidden' type='hidden' value=0 name='sauna'>
+		<label for="sauna"> sauna</label><br>
+
+
+		<input type="checkbox" id="bathtub" name="bathtub" value=1>
+		<input id='bathtubHidden' type='hidden' value=0 name='bathtub'>
+		<label for="bathtub"> bathtub</label><br>		
+
+		<input type="checkbox" id="garage" name="garage" value=1>
+		<input id='garageHidden' type='hidden' value=0 name='garage'>
+		<label for="garage">garage</label><br>
+
+		<input type="checkbox" id="balcony" name="balcony" value=1>
+		<input id='balconyHidden' type='hidden' value=0 name='balcony'>
+		<label for="balcony">balcony</label><br>
+
+		<input type="checkbox" id="lift" name="lift" value=1>
+		<input id='liftHidden' type='hidden' value=0 name='lift'>
+		<label for="lift"> lift</label><br>
+
+		
+	  <label for="condition">Condition:</label>
+	  <select name="condition" id="condition">
+	  	<option value="condition_0">No Condition</option>
+		<option value="condition_Heas korras">condition_Heas korras</option>
+		<option value="condition_Keskmine">condition_Keskmine</option>
+		<option value="condition_Renoveeritud">condition_Renoveeritud</option>
+		<option value="condition_San. remont tehtud">condition_San. remont tehtud</option>
+		
+		<option value="condition_Uus">condition_Uus</option>
+		<option value="condition_Vajab renoveerimist">condition_Vajab renoveerimist</option>
+		<option value="condition_Vajab san. remonti">condition_Vajab san. remonti</option>
+		<option value="condition_Valmis">condition_Valmis</option>
+		
+	  </select>
+	  <br>
+
+	  <label for="energy_mark">Choose energy mark:</label>
+	  <select name="energy_mark" id="energy_mark">
+		<option value="en_mark_0">No Energy Mark</option>
+		<option value="en_mark_A">A</option>
+		<option value="en_mark_B">B</option>
+		<option value="en_mark_C">C</option>
+		<option value="en_mark_D">D</option>
+		<option value="en_mark_E">E</option>
+		<option value="en_mark_F">F</option>
+		<option value="en_mark_G">G</option>
+		<option value="en_mark_H">H</option>
+		<option value="en_mark_P">P</option>
+	  </select>
+	  <br>	
+		
+	
+	
+
+	  <label for="parking">Choose parking:</label>
+	  <select name="parking" id="park">
+		<option value="parking_maja">parking_maja</option>
+		<option value="parking_tasuline">parking_tasuline</option>
+		<option value="parking_tasuta">parking_tasuta</option>
+		<option value="parking_0">No Parking</option>
+	  </select>
+	  <br>	
+
+		<input type="checkbox" id="kitchen" name="kitchen" value=1>
+		<input id='liftHidden' type='hidden' value=0 name='kitchen'>
+		<label for="kitchen"> Tahan täielikult varustatud kööki</label><br>
+		
+		<input type="checkbox" id="garage" name="garage" value=1>
+		<input id='liftHidden' type='hidden' value=0 name='garage'>
+		<label for="heating">heating</label><br>
+
+	  
+		
+        <br>
+        <input type="submit">
+    </fieldset>
+</form>
+<br>
+<div class="result" align="center">
+    {% if result %}
+         {% for value in original_input %}
+            {{ value }}
+        {% endfor %}
+        <br>-
+        <br> Predicted Rent:
+           <p style="font-size:50px">{{ result }}</p>
+    {% endif %}
+</div>
+</html>
