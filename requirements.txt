@@ -3,5 +3,5 @@ pandas
 gunicorn
 pickle-mixin
 numpy
-tensorflow==2.0.0
+tensorflow==2.5.0
 keras
